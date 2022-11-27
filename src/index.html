@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121212" />
+    <link rel="stylesheet" href="style.css" />
+    <title>d e f a c t o - free open-source news checker.</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="logo">
+        <img src="logo.svg" alt="logo" />
+      </div>
+      <div class="content">
+        <p>
+          Check your website with <i>defacto</i>, a free, open-source news
+          checker, that saves times and validates the information, you consume.
+        </p>
+        <div class="search">
+          <input type="url" id="searchBar" placeholder="Enter your URL" />
+          <button id="check" onclick="senddata();">check</button>
+
+          <script>
+            function senddata() {
+              const apiUrl = new URL("http://localhost:3000/api/process");
+              var usersurl = {
+                searchUrl: document.getElementById("searchBar").value,
+              };
+              fetch(apiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(usersurl),
+              }).then(s => s.json()).then(data => {
+                const article = document.querySelector("#articleHeader").textContent = data.msg
+                console.log(data)
+              });
+            }
+          </script>
+        </div>
+        <p id="errorMessage">Click</p>
+        <p id="articleHeader" >  </p>
+      </div>
+    </div>
+  </body>
+</html>
