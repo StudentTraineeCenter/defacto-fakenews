@@ -19,11 +19,15 @@ app.get("/", (req, res) => {
 
 app.post("/api/process", (req, res) => {
 
+  if(!isValidHttpUrl(req.body.searchUrl))
+  {
+    res.send({msg: "Chyba! Nesprávná url"})
+    return;
+  }
   let scrapeStuff = scrapePage(req.body.searchUrl);
 
   scrapeStuff.then(function (result) {
     console.log(result);
-    //getArticles(result);
     res.send({msg: result})
   });
 
@@ -33,3 +37,13 @@ app.post("/api/process", (req, res) => {
 app.listen(3000, () => {
   console.log("Server running o port 3000..");
 });
+
+function isValidHttpUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
+}
