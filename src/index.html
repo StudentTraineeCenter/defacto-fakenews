@@ -21,9 +21,10 @@
         <div class="search">
           <input type="url" id="searchBar" placeholder="Enter your URL" />
           <button id="check" onclick="senddata();">check</button>
-
           <script>
             function senddata() {
+              const loadinganim = document.querySelector(".lds-ring");
+              loadinganim.style.display = 'block';
               const apiUrl = new URL("http://localhost:3000/api/process");
               var usersurl = {
                 searchUrl: document.getElementById("searchBar").value,
@@ -33,6 +34,8 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(usersurl),
               }).then(s => s.json()).then(data => {
+                const loadinganim = document.querySelector(".lds-ring");
+                loadinganim.style.display = 'none';
                 const article = document.querySelector("#articleHeader").textContent = data.msg
                 console.log(data)
               });
@@ -41,6 +44,7 @@
         </div>
         <p id="errorMessage">Click</p>
         <p id="articleHeader" >  </p>
+        <div class="lds-ring" style="display:none"><div>
       </div>
     </div>
   </body>
