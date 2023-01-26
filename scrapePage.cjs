@@ -10,9 +10,6 @@ async function scrapePage(pageUrl) {
   const headers = await page.evaluate(() => {
     return Array.from(document.querySelectorAll("h1")).map((x) => x.innerText);
   });
-  const pageTitle = await page.title();
-  //console.log(pageTitle);
-  //console.log(headers);
   await browser.close();
   return headers;
 }
