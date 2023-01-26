@@ -25,6 +25,8 @@
             function senddata() {
               const loadinganim = document.querySelector(".lds-ring");
               loadinganim.style.display = 'block';
+              // Clear text while loading
+              const article = document.querySelector("#articleHeader").innerHTML = "";
               const apiUrl = new URL("http://localhost:3000/api/process");
               var usersurl = {
                 searchUrl: document.getElementById("searchBar").value,
@@ -36,7 +38,13 @@
               }).then(s => s.json()).then(data => {
                 const loadinganim = document.querySelector(".lds-ring");
                 loadinganim.style.display = 'none';
-                const article = document.querySelector("#articleHeader").textContent = data.msg
+                if(data.msg == "False"){
+                  data.msg = "The article is most likely to be <b>fake</b> news according to our prediction."
+                }
+                if(data.msg == "True"){
+                  data.msg = "The article is most likely to be <b>true</b> according to our prediction."
+                }
+                const article = document.querySelector("#articleHeader").innerHTML = data.msg
                 console.log(data)
               });
             }
