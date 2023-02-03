@@ -1,3 +1,4 @@
+####  Readme v češtině [na tomto odkazu](https://github.com/StudentTraineeCenter/defacto-fakenews/blob/master/README.cs.md)
 # Defacto - Fake news detection 👋
 A project where artificial intelligence is used to distinguish between fake and real information. 📰
 
@@ -6,10 +7,10 @@ A project where artificial intelligence is used to distinguish between fake and 
 2. Open directory and start `install.bat` file. This will install all necessary libraries and also will start a program
 And it is done. Your web server and python api is running.
 
-## How it works
+## How it works❓
 ![Image](https://raw.githubusercontent.com/StudentTraineeCenter/defacto-fakenews/master/example.png)
 In this simple diagram you can see how the whole program works.
-First, we receive URL on web server. We take this url and pass it to `scrapePage.cjs. Function of this program is described deeper in this readme.
+First, we receive URL on web server. We take this url and pass it to `scrapePage.cjs`. Function of this program is described deeper in this readme.
 Then, we send post request to python api containing scraped text as body. Python API gets this text and calls Ai model to decide truthfulness of text. When decision is made, we send it back to web server and it shows on frontend.
 
 ## Python model ⛵
