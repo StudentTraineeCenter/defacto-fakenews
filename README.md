@@ -13,8 +13,9 @@ In this simple diagram you can see how the whole program works.
 First, we receive URL on web server. We take this url and pass it to `scrapePage.cjs`. Function of this program is described deeper in this readme.
 Then, we send post request to python api containing scraped text as body. Python API gets this text and calls Ai model to decide truthfulness of text. When decision is made, we send it back to web server and it shows on frontend.
 
+
 ## Python model ⛵
-There is a python AI model, trained on a dataset from **kaggle**. It uses **Sklearn** and **Pandas 🐼 library**. We use function *classify_text*, which we then export to file *server.py*. In server we use **flask** library for own API. API takes text as body and returns true/false based on prediction about the news. Dataset used is from some **Kaggle** project. 
+There is a python AI model, trained on a dataset from **kaggle**. It uses **Sklearn** and **Pandas 🐼 library**. We use function *classify_text*, which we then export to file *server.py*. In server we use **flask** library for own API. API takes text as body and returns true/false based on prediction about the news. Dataset used is from some **Kaggle** project. Accuracy of this Ai model is 0.92230, meaning it is trained and 92,23% same as data that we have provided.
 
 ## Scraping with Javascript 🌥️
 We used a javascript library called **Pupeteer** to fetch an **h1** element from a given website, after doing so, the program returns the result and sends it over to our Python API that decides whether the information is according to reality or is but a fabrication.
