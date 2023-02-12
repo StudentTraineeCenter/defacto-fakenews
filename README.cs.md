@@ -13,7 +13,7 @@ Nejprve obdržíme adresu URL na webovém serveru. Vezmeme tuto url adresu a př
 Poté odešleme post požadavek do python api, který obsahuje text ze stránky. Python API získá tento text a Ai model vyhodnotí pravdivost tohoto textu. Rozhodnutí odešleme zpět na webový server a zobrazí se na frontendu.
 
 ## Python model ⛵
-K dispozici je Python model AI, natrénovaný na datasetu z **kaggle**. Používá **Sklearn** a knihovnu **Pandas 🐼**. Používáme funkci *classify_text*, kterou následně exportujeme do souboru *server.py*. V serveru používáme knihovnu **flask** pro vlastní API. API bere text jako tělo a vrací true/false na základě predikce o zprávě. Použitá datová sada pochází z projektu **Kaggle**. 
+K dispozici je Python model AI, natrénovaný na datasetu z **kaggle**. Používá **Sklearn** a knihovnu **Pandas 🐼**. Používáme funkci *classify_text*, kterou následně exportujeme do souboru *server.py*. V serveru používáme knihovnu **flask** pro vlastní API. API bere text jako tělo a vrací true/false na základě predikce o zprávě. Použitá datová sada pochází z projektu **Kaggle**. Přesnost tohoto Ai modelu je 0,92230, což znamená, že je natrénovaný na 92,23% stejný jako data, která jsme poskytli.
 
 ## Scraping pomocí Javascriptu 🌥️
 Použili jsme javascriptovou knihovnu s názvem **Pupeteer** pro načtení prvku **h1** z dané webové stránky, poté program vrátí výsledek a odešle jej našemu API Pythonu, který rozhodne, zda informace odpovídá skutečnosti, nebo je jen výmyslem.
